@@ -51,11 +51,16 @@
                 this.$http.get(url + '/verificar-rut?rut=' + rut).then(response => { // peticion con vue-resource
                     this.showRutError = response
                     return this.showRutError
-                } 
+                }).catch((error) => {
+                    console.log(error)
+                })
+                
                 axios.get(url + '/verificar-rut?rut=' + rut)then(response => { // Petición con axios
                     this.showRutError = response
                     return this.showRutError
-                } 
+                }).catch((error) => {
+                    console.log(error)
+                })
             },
             formatRut () {
                 let clearRut = typeof this.model.rut === 'string' ? this.model.rut.replace(/[^0-9kK]+/g, '').toUpperCase() : '' // limpiamos la variable rut
